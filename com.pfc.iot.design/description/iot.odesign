@@ -1,0 +1,651 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:properties="http://www.eclipse.org/sirius/properties/1.0.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:tool="http://www.eclipse.org/sirius/diagram/description/tool/1.1.0" xmlns:tool_1="http://www.eclipse.org/sirius/description/tool/1.1.0" xmlns:validation="http://www.eclipse.org/sirius/description/validation/1.1.0" name="iot" version="12.0.0.2017041100">
+  <ownedViewpoints name="IoT">
+    <ownedRepresentations xsi:type="description_1:DiagramDescription" name="Software Diagram" domainClass="iot::Software" enablePopupBars="true">
+      <validationSet>
+        <ownedRules xsi:type="validation:SemanticValidationRule" name="EmptyRequiredPort" level="ERROR" message="This port does not use any Provided Port!" targetClass="iot::RequiredPort">
+          <audits auditExpression="aql:self.use &lt;> null"/>
+        </ownedRules>
+        <ownedRules xsi:type="validation:SemanticValidationRule" name="EmptyName" level="ERROR" message="This Sensor does not have any Name!" targetClass="iot::Sensor">
+          <audits auditExpression="aql:self.name &lt;> null"/>
+        </ownedRules>
+        <ownedRules xsi:type="validation:SemanticValidationRule" name="ZeroPinNumber" level="WARNING" message="This Sensor's Pin Number is 0! Are you sure about this?" targetClass="iot::Sensor">
+          <audits auditExpression="aql:self.pinNumber &lt;>  0"/>
+        </ownedRules>
+        <ownedRules xsi:type="validation:SemanticValidationRule" name="EmptyType" level="ERROR" message="This Sensor's has no Type!!" targetClass="iot::Sensor">
+          <audits auditExpression="aql:self.type &lt;> null"/>
+        </ownedRules>
+        <ownedRules xsi:type="validation:SemanticValidationRule" name="EmptyName" level="ERROR" message="This Actuator does not have any Name!" targetClass="iot::Actuator">
+          <audits auditExpression="aql:self.name &lt;> null"/>
+        </ownedRules>
+        <ownedRules xsi:type="validation:SemanticValidationRule" name="ZeroPinNumber" level="WARNING" message="This Actuator's Pin Number is 0! Are you sure about this?" targetClass="iot::Actuator">
+          <audits auditExpression="aql:self.pinNumber &lt;>  0"/>
+        </ownedRules>
+        <ownedRules xsi:type="validation:SemanticValidationRule" name="EmptyType" level="ERROR" message="This Actuator's has no Type!!" targetClass="iot::Actuator">
+          <audits auditExpression="aql:self.type &lt;> null"/>
+        </ownedRules>
+        <ownedRules xsi:type="validation:SemanticValidationRule" name="EmptyName" level="ERROR" message="This Snippet does not have any Name!" targetClass="iot::Snippet">
+          <audits auditExpression="aql:self.name &lt;> null"/>
+        </ownedRules>
+        <ownedRules xsi:type="validation:SemanticValidationRule" name="EmptyName" level="ERROR" message="This Software does not have any Name!" targetClass="iot::Software">
+          <audits auditExpression="aql:self.name &lt;> null"/>
+        </ownedRules>
+        <ownedRules xsi:type="validation:SemanticValidationRule" name="VarNotSet" level="ERROR" message="This IterativeLoop has unset variable(s)!" targetClass="iot::IterativeLoop">
+          <audits auditExpression="aql:self.var1 &lt;> null"/>
+          <audits auditExpression="aql:self.var2 &lt;> null"/>
+        </ownedRules>
+        <ownedRules xsi:type="validation:SemanticValidationRule" name="VarNotSet" level="ERROR" message="This ConditionalRequiredPort has unset variable(s)!" targetClass="iot::ConditionalRequiredPort">
+          <audits auditExpression="aql:self.var1 &lt;> null"/>
+          <audits auditExpression="aql:self.var2 &lt;> null"/>
+        </ownedRules>
+      </validationSet>
+      <defaultLayer name="Default">
+        <nodeMappings name="SensorNode" semanticCandidatesExpression="feature:item" domainClass="iot::Sensor">
+          <style xsi:type="style:SquareDescription" labelSize="12" labelExpression="aql:self.eClass().name.toUpper() + '\n' + self.name" iconPath="/com.pfc.iot.design/icons/icons/Sensor.png" labelPosition="node" resizeKind="NSEW" width="20" height="10">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_purple']"/>
+          </style>
+        </nodeMappings>
+        <nodeMappings name="ActuatorNode" semanticCandidatesExpression="feature:item" domainClass="iot::Actuator">
+          <style xsi:type="style:SquareDescription" labelSize="12" labelExpression="aql:self.eClass().name.toUpper() + '\n' + self.name" iconPath="/com.pfc.iot.design/icons/icons/Actuator.png" labelPosition="node" resizeKind="NSEW" width="20" height="10">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_red']"/>
+          </style>
+        </nodeMappings>
+        <nodeMappings name="SnippetNode" semanticCandidatesExpression="feature:item" domainClass="iot::Snippet">
+          <style xsi:type="style:SquareDescription" labelSize="12" labelExpression="aql:self.eClass().name.toUpper() + '\n' + self.name" iconPath="/com.pfc.iot.design/icons/icons/Snippet.png" labelPosition="node" resizeKind="NSEW" width="20" height="10">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_yellow']"/>
+          </style>
+        </nodeMappings>
+        <nodeMappings name="RequiredPortNode" preconditionExpression="aql:not self.ancestors()->first().eClass().name.toString().equalsIgnoreCase(iot::Branching.name)" semanticCandidatesExpression="aql:self.item.requiredport" domainClass="iot::RequiredPort">
+          <style xsi:type="style:WorkspaceImageDescription" labelSize="12" showIcon="false" labelExpression="aql:null" labelAlignment="LEFT" sizeComputationExpression="-1" resizeKind="NSEW" workspacePath="/com.pfc.iot.design/icons/icons/RequiredPort.png">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+          </style>
+        </nodeMappings>
+        <nodeMappings name="ConditionPortNode" preconditionExpression="aql:self.ancestors()->first().eClass().name.toString().equalsIgnoreCase(iot::IterativeLoop.name)" semanticCandidatesExpression="aql:self.item.condition" domainClass="iot::ConditionPort">
+          <style xsi:type="style:WorkspaceImageDescription" labelSize="12" showIcon="false" labelExpression="aql:null" labelAlignment="LEFT" sizeComputationExpression="-1" resizeKind="NSEW" workspacePath="/com.pfc.iot.design/icons/icons/RequiredPort.png">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+          </style>
+        </nodeMappings>
+        <nodeMappings name="IfPortNode" preconditionExpression="aql:self.ancestors()->first().eClass().name.toString().equalsIgnoreCase(iot::Branching.name)" semanticCandidatesExpression="aql:self.item.ifport" domainClass="iot::IfPort">
+          <style xsi:type="style:WorkspaceImageDescription" labelSize="12" showIcon="false" labelExpression="aql:null" labelAlignment="RIGHT" sizeComputationExpression="-1" resizeKind="NSEW" workspacePath="com.pfc.iot.design/icons/icons/RequiredPort.png">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+          </style>
+        </nodeMappings>
+        <nodeMappings name="ThenPortNode" preconditionExpression="aql:self.ancestors()->first().eClass().name.toString().equalsIgnoreCase(iot::Branching.name)" semanticCandidatesExpression="aql:self.item.thenport" domainClass="iot::ThenPort">
+          <style xsi:type="style:WorkspaceImageDescription" labelSize="12" showIcon="false" labelExpression="aql:null" labelAlignment="RIGHT" sizeComputationExpression="-1" resizeKind="NSEW" workspacePath="com.pfc.iot.design/icons/icons/RequiredPort.png">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+          </style>
+        </nodeMappings>
+        <nodeMappings name="ElsePortNode" preconditionExpression="aql:self.ancestors()->first().eClass().name.toString().equalsIgnoreCase(iot::Branching.name)" semanticCandidatesExpression="aql:self.item.elseport" domainClass="iot::ElsePort">
+          <style xsi:type="style:WorkspaceImageDescription" labelSize="12" showIcon="false" labelExpression="aql:null" labelAlignment="RIGHT" sizeComputationExpression="-1" resizeKind="NSEW" workspacePath="com.pfc.iot.design/icons/icons/RequiredPort.png">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+          </style>
+        </nodeMappings>
+        <nodeMappings name="ProvidedPortNode" semanticCandidatesExpression="aql:self.item.providedport" domainClass="iot::ProvidedPort">
+          <style xsi:type="style:WorkspaceImageDescription" labelSize="12" showIcon="false" labelExpression="aql:null" sizeComputationExpression="-1" labelPosition="node" resizeKind="NSEW" workspacePath="/com.pfc.iot.design/icons/icons/ProvidedPort.png">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+          </style>
+        </nodeMappings>
+        <nodeMappings name="SequenceNode" semanticCandidatesExpression="feature:item" domainClass="iot::Sequence">
+          <style xsi:type="style:WorkspaceImageDescription" labelSize="12" showIcon="false" labelExpression="aql:null" sizeComputationExpression="-1" labelPosition="node" resizeKind="NSEW" workspacePath="/com.pfc.iot.design/icons/icons/Sequence.png">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+          </style>
+        </nodeMappings>
+        <nodeMappings name="BranchingNode" semanticCandidatesExpression="feature:item" domainClass="iot::Branching">
+          <style xsi:type="style:WorkspaceImageDescription" labelSize="12" showIcon="false" labelExpression="aql:self.ifport.operator.toString().concat(' ') + self.ifport.var" labelAlignment="RIGHT" sizeComputationExpression="-1" resizeKind="NSEW" workspacePath="/com.pfc.iot.design/icons/icons/Branching.png">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+          </style>
+        </nodeMappings>
+        <nodeMappings name="IterativeLoopNode" semanticCandidatesExpression="feature:item" domainClass="iot::IterativeLoop">
+          <style xsi:type="style:WorkspaceImageDescription" labelSize="12" showIcon="false" labelExpression="aql:self.operator.toString().concat(' ') + self.var" labelAlignment="RIGHT" sizeComputationExpression="-1" resizeKind="NSEW" workspacePath="/com.pfc.iot.design/icons/icons/Loop.png">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+          </style>
+        </nodeMappings>
+        <nodeMappings name="CounterLoopNode" semanticCandidatesExpression="feature:item" domainClass="iot::CounterLoop">
+          <style xsi:type="style:WorkspaceImageDescription" labelSize="12" showIcon="false" labelExpression="feature:counter" sizeComputationExpression="-1" labelPosition="node" resizeKind="NSEW" workspacePath="/com.pfc.iot.design/icons/icons/Loop.png">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+          </style>
+        </nodeMappings>
+        <edgeMappings name="ProvidedPortEdge" sourceMapping="//@ownedViewpoints[name='IoT']/@ownedRepresentations[name='Software%20Diagram']/@defaultLayer/@nodeMappings[name='ActuatorNode'] //@ownedViewpoints[name='IoT']/@ownedRepresentations[name='Software%20Diagram']/@defaultLayer/@nodeMappings[name='BranchingNode'] //@ownedViewpoints[name='IoT']/@ownedRepresentations[name='Software%20Diagram']/@defaultLayer/@nodeMappings[name='CounterLoopNode'] //@ownedViewpoints[name='IoT']/@ownedRepresentations[name='Software%20Diagram']/@defaultLayer/@nodeMappings[name='IterativeLoopNode'] //@ownedViewpoints[name='IoT']/@ownedRepresentations[name='Software%20Diagram']/@defaultLayer/@nodeMappings[name='SensorNode'] //@ownedViewpoints[name='IoT']/@ownedRepresentations[name='Software%20Diagram']/@defaultLayer/@nodeMappings[name='SequenceNode'] //@ownedViewpoints[name='IoT']/@ownedRepresentations[name='Software%20Diagram']/@defaultLayer/@containerMappings[name='SoftwareContainer'] //@ownedViewpoints[name='IoT']/@ownedRepresentations[name='Software%20Diagram']/@defaultLayer/@nodeMappings[name='SnippetNode']" targetMapping="//@ownedViewpoints[name='IoT']/@ownedRepresentations[name='Software%20Diagram']/@defaultLayer/@nodeMappings[name='ProvidedPortNode']" targetFinderExpression="feature:providedport">
+          <style targetArrow="NoDecoration" sizeComputationExpression="2">
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+            <centerLabelStyleDescription labelSize="12">
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </centerLabelStyleDescription>
+          </style>
+        </edgeMappings>
+        <edgeMappings name="ConditionalRequiredPortEdge" sourceMapping="//@ownedViewpoints[name='IoT']/@ownedRepresentations[name='Software%20Diagram']/@defaultLayer/@nodeMappings[name='BranchingNode']" targetMapping="//@ownedViewpoints[name='IoT']/@ownedRepresentations[name='Software%20Diagram']/@defaultLayer/@nodeMappings[name='IfPortNode']" targetFinderExpression="feature:requiredport">
+          <style targetArrow="NoDecoration" sizeComputationExpression="2">
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+            <centerLabelStyleDescription labelSize="12">
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </centerLabelStyleDescription>
+          </style>
+        </edgeMappings>
+        <edgeMappings name="RequiredPortEdge" sourceMapping="//@ownedViewpoints[name='IoT']/@ownedRepresentations[name='Software%20Diagram']/@defaultLayer/@nodeMappings[name='ActuatorNode'] //@ownedViewpoints[name='IoT']/@ownedRepresentations[name='Software%20Diagram']/@defaultLayer/@nodeMappings[name='CounterLoopNode'] //@ownedViewpoints[name='IoT']/@ownedRepresentations[name='Software%20Diagram']/@defaultLayer/@nodeMappings[name='IterativeLoopNode'] //@ownedViewpoints[name='IoT']/@ownedRepresentations[name='Software%20Diagram']/@defaultLayer/@nodeMappings[name='SensorNode'] //@ownedViewpoints[name='IoT']/@ownedRepresentations[name='Software%20Diagram']/@defaultLayer/@nodeMappings[name='SequenceNode'] //@ownedViewpoints[name='IoT']/@ownedRepresentations[name='Software%20Diagram']/@defaultLayer/@containerMappings[name='SoftwareContainer'] //@ownedViewpoints[name='IoT']/@ownedRepresentations[name='Software%20Diagram']/@defaultLayer/@nodeMappings[name='SnippetNode']" targetMapping="//@ownedViewpoints[name='IoT']/@ownedRepresentations[name='Software%20Diagram']/@defaultLayer/@nodeMappings[name='RequiredPortNode']" targetFinderExpression="feature:requiredport">
+          <style targetArrow="NoDecoration" sizeComputationExpression="2">
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+            <centerLabelStyleDescription labelSize="12">
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </centerLabelStyleDescription>
+          </style>
+        </edgeMappings>
+        <edgeMappings name="ConditionEdge" sourceMapping="//@ownedViewpoints[name='IoT']/@ownedRepresentations[name='Software%20Diagram']/@defaultLayer/@nodeMappings[name='IterativeLoopNode']" targetMapping="//@ownedViewpoints[name='IoT']/@ownedRepresentations[name='Software%20Diagram']/@defaultLayer/@nodeMappings[name='ConditionPortNode']" targetFinderExpression="feature:condition">
+          <style targetArrow="NoDecoration" sizeComputationExpression="2">
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+            <centerLabelStyleDescription labelSize="12" showIcon="false" labelExpression="Condition">
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </centerLabelStyleDescription>
+          </style>
+        </edgeMappings>
+        <edgeMappings name="IfEdge" sourceMapping="//@ownedViewpoints[name='IoT']/@ownedRepresentations[name='Software%20Diagram']/@defaultLayer/@nodeMappings[name='BranchingNode']" targetMapping="//@ownedViewpoints[name='IoT']/@ownedRepresentations[name='Software%20Diagram']/@defaultLayer/@nodeMappings[name='IfPortNode']" targetFinderExpression="feature:ifport">
+          <style targetArrow="NoDecoration" sizeComputationExpression="2">
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+            <centerLabelStyleDescription labelSize="12" showIcon="false" labelExpression="If">
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </centerLabelStyleDescription>
+          </style>
+        </edgeMappings>
+        <edgeMappings name="ThenEdge" sourceMapping="//@ownedViewpoints[name='IoT']/@ownedRepresentations[name='Software%20Diagram']/@defaultLayer/@nodeMappings[name='BranchingNode']" targetMapping="//@ownedViewpoints[name='IoT']/@ownedRepresentations[name='Software%20Diagram']/@defaultLayer/@nodeMappings[name='ThenPortNode']" targetFinderExpression="feature:thenport">
+          <style targetArrow="NoDecoration" sizeComputationExpression="2">
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+            <centerLabelStyleDescription labelSize="12" showIcon="false" labelExpression="Then">
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </centerLabelStyleDescription>
+          </style>
+        </edgeMappings>
+        <edgeMappings name="ElseEdge" sourceMapping="//@ownedViewpoints[name='IoT']/@ownedRepresentations[name='Software%20Diagram']/@defaultLayer/@nodeMappings[name='BranchingNode']" targetMapping="//@ownedViewpoints[name='IoT']/@ownedRepresentations[name='Software%20Diagram']/@defaultLayer/@nodeMappings[name='ElsePortNode']" targetFinderExpression="feature:elseport">
+          <style targetArrow="NoDecoration" sizeComputationExpression="2">
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+            <centerLabelStyleDescription labelSize="12" showIcon="false" labelExpression="Else">
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </centerLabelStyleDescription>
+          </style>
+        </edgeMappings>
+        <edgeMappings name="UseEdge" sourceMapping="//@ownedViewpoints[name='IoT']/@ownedRepresentations[name='Software%20Diagram']/@defaultLayer/@nodeMappings[name='RequiredPortNode'] //@ownedViewpoints[name='IoT']/@ownedRepresentations[name='Software%20Diagram']/@defaultLayer/@nodeMappings[name='IfPortNode'] //@ownedViewpoints[name='IoT']/@ownedRepresentations[name='Software%20Diagram']/@defaultLayer/@nodeMappings[name='ConditionPortNode'] //@ownedViewpoints[name='IoT']/@ownedRepresentations[name='Software%20Diagram']/@defaultLayer/@nodeMappings[name='ThenPortNode'] //@ownedViewpoints[name='IoT']/@ownedRepresentations[name='Software%20Diagram']/@defaultLayer/@nodeMappings[name='ElsePortNode']" targetMapping="//@ownedViewpoints[name='IoT']/@ownedRepresentations[name='Software%20Diagram']/@defaultLayer/@nodeMappings[name='ProvidedPortNode']" targetFinderExpression="feature:use">
+          <style>
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+            <centerLabelStyleDescription labelSize="12">
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </centerLabelStyleDescription>
+          </style>
+        </edgeMappings>
+        <containerMappings name="SoftwareContainer" semanticCandidatesExpression="feature:item" doubleClickDescription="//@ownedViewpoints[name='IoT']/@ownedRepresentations[name='Software%20Diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='dblClickSoftware']" domainClass="iot::Software" childrenPresentation="List">
+          <subNodeMappings name="SoftwareSubItemNode" semanticCandidatesExpression="aql:self.item" domainClass="iot::Item">
+            <style xsi:type="style:SquareDescription" labelSize="12" labelExpression="aql:null" labelPosition="node" resizeKind="NSEW">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+            </style>
+          </subNodeMappings>
+          <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" labelSize="12" iconPath="/com.pfc.iot.design/icons/icons/Software.png">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+            <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_orange']"/>
+          </style>
+        </containerMappings>
+        <toolSections name="Components">
+          <ownedTools xsi:type="tool:NodeCreationDescription" name="Sensor" nodeMappings="//@ownedViewpoints[name='IoT']/@ownedRepresentations[name='Software%20Diagram']/@defaultLayer/@nodeMappings[name='SensorNode']" extraMappings="//@ownedViewpoints[name='IoT']/@ownedRepresentations[name='Software%20Diagram']/@defaultLayer/@containerMappings[name='SoftwareContainer']">
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:container">
+                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="iot::Sensor" referenceName="item">
+                  <subModelOperations xsi:type="properties:DialogModelOperation" titleExpression="New Sensor">
+                    <buttons labelExpression="Cancel" closeDialogOnClick="true" rollbackChangesOnClose="true"/>
+                    <buttons labelExpression="OK" default="true" closeDialogOnClick="true"/>
+                    <page name="Default Page" labelExpression="Create Sensor" semanticCandidateExpression="var:self" groups="//@ownedViewpoints[name='IoT']/@ownedRepresentations[name='Software%20Diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='Sensor']/@initialOperation/@firstModelOperations/@subModelOperations.0/@subModelOperations.0/@groups.0"/>
+                    <groups name="Default Group" labelExpression="Sensor" semanticCandidateExpression="var:self">
+                      <controls xsi:type="properties:TextDescription" name="name" labelExpression="Name">
+                        <initialOperation>
+                          <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:instance">
+                            <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="aql:newValue"/>
+                          </firstModelOperations>
+                        </initialOperation>
+                      </controls>
+                      <controls xsi:type="properties:TextDescription" name="type" labelExpression="Type">
+                        <initialOperation>
+                          <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:instance">
+                            <subModelOperations xsi:type="tool_1:SetValue" featureName="type" valueExpression="aql:newValue"/>
+                          </firstModelOperations>
+                        </initialOperation>
+                      </controls>
+                      <controls xsi:type="properties:TextDescription" name="pinNumber" labelExpression="Pin Number">
+                        <initialOperation>
+                          <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:instance">
+                            <subModelOperations xsi:type="tool_1:SetValue" featureName="pinNumber" valueExpression="aql:newValue"/>
+                          </firstModelOperations>
+                        </initialOperation>
+                      </controls>
+                      <controls xsi:type="properties:TextDescription" name="timeInterval" labelExpression="Time Interval" valueExpression="0">
+                        <initialOperation>
+                          <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:instance">
+                            <subModelOperations xsi:type="tool_1:SetValue" featureName="timeInterval" valueExpression="aql:newValue"/>
+                          </firstModelOperations>
+                        </initialOperation>
+                      </controls>
+                    </groups>
+                  </subModelOperations>
+                  <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:instance">
+                    <subModelOperations xsi:type="tool_1:SetValue" featureName="UUID" valueExpression="service:generateUUID()"/>
+                  </subModelOperations>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:NodeCreationDescription" name="Actuator" nodeMappings="//@ownedViewpoints[name='IoT']/@ownedRepresentations[name='Software%20Diagram']/@defaultLayer/@nodeMappings[name='ActuatorNode']" extraMappings="//@ownedViewpoints[name='IoT']/@ownedRepresentations[name='Software%20Diagram']/@defaultLayer/@containerMappings[name='SoftwareContainer']">
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:container">
+                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="iot::Actuator" referenceName="item">
+                  <subModelOperations xsi:type="properties:DialogModelOperation" titleExpression="New Actuator">
+                    <buttons labelExpression="Cancel" closeDialogOnClick="true" rollbackChangesOnClose="true"/>
+                    <buttons labelExpression="OK" default="true" closeDialogOnClick="true"/>
+                    <page name="Default Page" labelExpression="Create Actuator" semanticCandidateExpression="var:self" groups="//@ownedViewpoints[name='IoT']/@ownedRepresentations[name='Software%20Diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='Actuator']/@initialOperation/@firstModelOperations/@subModelOperations.0/@subModelOperations.0/@groups.0"/>
+                    <groups name="Default Group" labelExpression="Actuator" semanticCandidateExpression="var:self">
+                      <controls xsi:type="properties:TextDescription" name="name" labelExpression="Name">
+                        <initialOperation>
+                          <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:instance">
+                            <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="aql:newValue"/>
+                          </firstModelOperations>
+                        </initialOperation>
+                      </controls>
+                      <controls xsi:type="properties:TextDescription" name="type" labelExpression="Type">
+                        <initialOperation>
+                          <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:instance">
+                            <subModelOperations xsi:type="tool_1:SetValue" featureName="type" valueExpression="aql:newValue"/>
+                          </firstModelOperations>
+                        </initialOperation>
+                      </controls>
+                      <controls xsi:type="properties:TextDescription" name="pinNumber" labelExpression="Pin Number">
+                        <initialOperation>
+                          <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:instance">
+                            <subModelOperations xsi:type="tool_1:SetValue" featureName="pinNumber" valueExpression="aql:newValue"/>
+                          </firstModelOperations>
+                        </initialOperation>
+                      </controls>
+                      <controls xsi:type="properties:TextDescription" name="timeInterval" labelExpression="Time Interval" valueExpression="0">
+                        <initialOperation>
+                          <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:instance">
+                            <subModelOperations xsi:type="tool_1:SetValue" featureName="timeInterval" valueExpression="aql:newValue"/>
+                          </firstModelOperations>
+                        </initialOperation>
+                      </controls>
+                    </groups>
+                  </subModelOperations>
+                  <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:instance">
+                    <subModelOperations xsi:type="tool_1:SetValue" featureName="UUID" valueExpression="service:generateUUID()"/>
+                  </subModelOperations>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:NodeCreationDescription" name="Snippet" nodeMappings="//@ownedViewpoints[name='IoT']/@ownedRepresentations[name='Software%20Diagram']/@defaultLayer/@nodeMappings[name='SnippetNode']" extraMappings="//@ownedViewpoints[name='IoT']/@ownedRepresentations[name='Software%20Diagram']/@defaultLayer/@containerMappings[name='SoftwareContainer']">
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:container">
+                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="iot::Snippet" referenceName="item">
+                  <subModelOperations xsi:type="properties:DialogModelOperation" titleExpression="New Snippet">
+                    <buttons labelExpression="Cancel" closeDialogOnClick="true" rollbackChangesOnClose="true"/>
+                    <buttons labelExpression="OK" default="true" closeDialogOnClick="true"/>
+                    <page name="Default Page" labelExpression="Create Snippet" semanticCandidateExpression="var:self" groups="//@ownedViewpoints[name='IoT']/@ownedRepresentations[name='Software%20Diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='Snippet']/@initialOperation/@firstModelOperations/@subModelOperations.0/@subModelOperations.0/@groups.0"/>
+                    <groups name="Default Group" labelExpression="Snippet" semanticCandidateExpression="var:self">
+                      <controls xsi:type="properties:TextDescription" name="name" labelExpression="Name">
+                        <initialOperation>
+                          <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:instance">
+                            <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="aql:newValue"/>
+                          </firstModelOperations>
+                        </initialOperation>
+                      </controls>
+                      <controls xsi:type="properties:TextDescription" name="scriptPath" labelExpression="Script Path">
+                        <initialOperation>
+                          <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:instance">
+                            <subModelOperations xsi:type="tool_1:SetValue" featureName="scriptPath" valueExpression="aql:newValue"/>
+                          </firstModelOperations>
+                        </initialOperation>
+                      </controls>
+                    </groups>
+                  </subModelOperations>
+                  <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:instance">
+                    <subModelOperations xsi:type="tool_1:SetValue" featureName="UUID" valueExpression="service:generateUUID()"/>
+                  </subModelOperations>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:DoubleClickDescription" name="dblClickSoftware" mappings="//@ownedViewpoints[name='IoT']/@ownedRepresentations[name='Software%20Diagram']/@defaultLayer/@containerMappings[name='SoftwareContainer']">
+            <element name="element"/>
+            <elementView name="elementView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:Navigation" createIfNotExistent="true">
+                <diagramDescription href="../../com.pfc.iot.design2/description/iot.odesign#//@ownedViewpoints[name='IoT']/@ownedRepresentations[name='Software%20Diagram']"/>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool_1:PopupMenu" name="Utility Tools">
+            <menuItemDescription xsi:type="tool_1:OperationAction" name="Generate UUID" forceRefresh="true">
+              <view name="views"/>
+              <initialOperation>
+                <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:self">
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="UUID" valueExpression="service:generateUUID()"/>
+                </firstModelOperations>
+              </initialOperation>
+            </menuItemDescription>
+            <menuItemDescription xsi:type="tool_1:OperationAction" name="Run" precondition="aql:self.eClass().name.toString().equalsIgnoreCase(iot::Software.name)" forceRefresh="true">
+              <view name="views"/>
+              <initialOperation>
+                <firstModelOperations xsi:type="tool_1:ExternalJavaAction" name="Run" forceRefresh="true" id="my.iot.design.javaActions">
+                  <parameters name="path" value="com.emf.iot.testing/My.iot"/>
+                  <parameters name="targetFolder" value="com.emf.iot.testing/src-gen"/>
+                </firstModelOperations>
+              </initialOperation>
+            </menuItemDescription>
+          </ownedTools>
+        </toolSections>
+        <toolSections name="Connectors">
+          <ownedTools xsi:type="tool:NodeCreationDescription" name="RequiredPort" nodeMappings="//@ownedViewpoints[name='IoT']/@ownedRepresentations[name='Software%20Diagram']/@defaultLayer/@nodeMappings[name='RequiredPortNode']" extraMappings="//@ownedViewpoints[name='IoT']/@ownedRepresentations[name='Software%20Diagram']/@defaultLayer/@nodeMappings[name='ActuatorNode'] //@ownedViewpoints[name='IoT']/@ownedRepresentations[name='Software%20Diagram']/@defaultLayer/@nodeMappings[name='CounterLoopNode'] //@ownedViewpoints[name='IoT']/@ownedRepresentations[name='Software%20Diagram']/@defaultLayer/@nodeMappings[name='SensorNode'] //@ownedViewpoints[name='IoT']/@ownedRepresentations[name='Software%20Diagram']/@defaultLayer/@nodeMappings[name='SequenceNode'] //@ownedViewpoints[name='IoT']/@ownedRepresentations[name='Software%20Diagram']/@defaultLayer/@containerMappings[name='SoftwareContainer'] //@ownedViewpoints[name='IoT']/@ownedRepresentations[name='Software%20Diagram']/@defaultLayer/@nodeMappings[name='IterativeLoopNode'] //@ownedViewpoints[name='IoT']/@ownedRepresentations[name='Software%20Diagram']/@defaultLayer/@nodeMappings[name='SnippetNode']">
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:container">
+                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="iot::RequiredPort" referenceName="requiredport">
+                  <subModelOperations xsi:type="properties:DialogModelOperation" titleExpression="New Required Port">
+                    <buttons labelExpression="Cancel" closeDialogOnClick="true" rollbackChangesOnClose="true"/>
+                    <buttons labelExpression="OK" default="true" closeDialogOnClick="true"/>
+                    <page name="Default Page" labelExpression="Create Required Port" semanticCandidateExpression="var:self" groups="//@ownedViewpoints[name='IoT']/@ownedRepresentations[name='Software%20Diagram']/@defaultLayer/@toolSections.1/@ownedTools[name='RequiredPort']/@initialOperation/@firstModelOperations/@subModelOperations.0/@subModelOperations.0/@groups.0"/>
+                    <groups name="Default Group" labelExpression="Required Port" semanticCandidateExpression="var:self">
+                      <controls xsi:type="properties:TextDescription" name="name" labelExpression="Name">
+                        <initialOperation>
+                          <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:instance">
+                            <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="aql:newValue"/>
+                          </firstModelOperations>
+                        </initialOperation>
+                      </controls>
+                    </groups>
+                  </subModelOperations>
+                  <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:instance">
+                    <subModelOperations xsi:type="tool_1:SetValue" featureName="UUID" valueExpression="service:generateUUID()"/>
+                  </subModelOperations>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:NodeCreationDescription" name="ConditionPort" nodeMappings="//@ownedViewpoints[name='IoT']/@ownedRepresentations[name='Software%20Diagram']/@defaultLayer/@nodeMappings[name='ConditionPortNode']" extraMappings="//@ownedViewpoints[name='IoT']/@ownedRepresentations[name='Software%20Diagram']/@defaultLayer/@nodeMappings[name='IterativeLoopNode']">
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:container">
+                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="iot::ConditionPort" referenceName="condition">
+                  <subModelOperations xsi:type="properties:DialogModelOperation" titleExpression="New Condition Port">
+                    <buttons labelExpression="Cancel" closeDialogOnClick="true" rollbackChangesOnClose="true"/>
+                    <buttons labelExpression="OK" default="true" closeDialogOnClick="true"/>
+                    <page name="Default Page" labelExpression="Create Condition Port" semanticCandidateExpression="var:self" groups="//@ownedViewpoints[name='IoT']/@ownedRepresentations[name='Software%20Diagram']/@defaultLayer/@toolSections.1/@ownedTools[name='ConditionPort']/@initialOperation/@firstModelOperations/@subModelOperations.0/@subModelOperations.0/@groups.0"/>
+                    <groups name="Default Group" labelExpression="Condition Port" semanticCandidateExpression="var:self">
+                      <controls xsi:type="properties:TextDescription" name="name" labelExpression="Name">
+                        <initialOperation>
+                          <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:instance">
+                            <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="aql:newValue"/>
+                          </firstModelOperations>
+                        </initialOperation>
+                      </controls>
+                    </groups>
+                  </subModelOperations>
+                  <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:instance">
+                    <subModelOperations xsi:type="tool_1:SetValue" featureName="UUID" valueExpression="service:generateUUID()"/>
+                  </subModelOperations>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:NodeCreationDescription" name="If" nodeMappings="//@ownedViewpoints[name='IoT']/@ownedRepresentations[name='Software%20Diagram']/@defaultLayer/@nodeMappings[name='IfPortNode']" extraMappings="//@ownedViewpoints[name='IoT']/@ownedRepresentations[name='Software%20Diagram']/@defaultLayer/@nodeMappings[name='BranchingNode']">
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:container">
+                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="iot::IfPort" referenceName="if">
+                  <subModelOperations xsi:type="properties:DialogModelOperation" titleExpression="New If Port">
+                    <buttons labelExpression="Cancel" closeDialogOnClick="true" rollbackChangesOnClose="true"/>
+                    <buttons labelExpression="OK" default="true" closeDialogOnClick="true"/>
+                    <page name="Default Page" labelExpression="Create If Port" semanticCandidateExpression="var:self" groups="//@ownedViewpoints[name='IoT']/@ownedRepresentations[name='Software%20Diagram']/@defaultLayer/@toolSections.1/@ownedTools[name='If']/@initialOperation/@firstModelOperations/@subModelOperations.0/@subModelOperations.0/@groups.0"/>
+                    <groups name="Default Group" labelExpression="If Port" semanticCandidateExpression="var:self">
+                      <controls xsi:type="properties:TextDescription" name="name" labelExpression="Name">
+                        <initialOperation>
+                          <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:instance">
+                            <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="aql:newValue"/>
+                          </firstModelOperations>
+                        </initialOperation>
+                      </controls>
+                    </groups>
+                  </subModelOperations>
+                  <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:instance">
+                    <subModelOperations xsi:type="tool_1:SetValue" featureName="UUID" valueExpression="service:generateUUID()"/>
+                  </subModelOperations>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:NodeCreationDescription" name="Then" nodeMappings="//@ownedViewpoints[name='IoT']/@ownedRepresentations[name='Software%20Diagram']/@defaultLayer/@nodeMappings[name='ThenPortNode']" extraMappings="//@ownedViewpoints[name='IoT']/@ownedRepresentations[name='Software%20Diagram']/@defaultLayer/@nodeMappings[name='BranchingNode']">
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:container">
+                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="iot::ThenPort" referenceName="then">
+                  <subModelOperations xsi:type="properties:DialogModelOperation" titleExpression="New Then Port">
+                    <buttons labelExpression="Cancel" closeDialogOnClick="true" rollbackChangesOnClose="true"/>
+                    <buttons labelExpression="OK" default="true" closeDialogOnClick="true"/>
+                    <page name="Default Page" labelExpression="Create Then Port" semanticCandidateExpression="var:self" groups="//@ownedViewpoints[name='IoT']/@ownedRepresentations[name='Software%20Diagram']/@defaultLayer/@toolSections.1/@ownedTools[name='Then']/@initialOperation/@firstModelOperations/@subModelOperations.0/@subModelOperations.0/@groups.0"/>
+                    <groups name="Default Group" labelExpression="Then Port" semanticCandidateExpression="var:self">
+                      <controls xsi:type="properties:TextDescription" name="name" labelExpression="Name">
+                        <initialOperation>
+                          <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:instance">
+                            <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="aql:newValue"/>
+                          </firstModelOperations>
+                        </initialOperation>
+                      </controls>
+                    </groups>
+                  </subModelOperations>
+                  <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:instance">
+                    <subModelOperations xsi:type="tool_1:SetValue" featureName="UUID" valueExpression="service:generateUUID()"/>
+                  </subModelOperations>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:NodeCreationDescription" name="Else" nodeMappings="//@ownedViewpoints[name='IoT']/@ownedRepresentations[name='Software%20Diagram']/@defaultLayer/@nodeMappings[name='ElsePortNode']" extraMappings="//@ownedViewpoints[name='IoT']/@ownedRepresentations[name='Software%20Diagram']/@defaultLayer/@nodeMappings[name='BranchingNode']">
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:container">
+                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="iot::ElsePort" referenceName="elseport">
+                  <subModelOperations xsi:type="properties:DialogModelOperation" titleExpression="New Else Port">
+                    <buttons labelExpression="Cancel" closeDialogOnClick="true" rollbackChangesOnClose="true"/>
+                    <buttons labelExpression="OK" default="true" closeDialogOnClick="true"/>
+                    <page name="Default Page" labelExpression="Create Else Port" semanticCandidateExpression="var:self" groups="//@ownedViewpoints[name='IoT']/@ownedRepresentations[name='Software%20Diagram']/@defaultLayer/@toolSections.1/@ownedTools[name='Else']/@initialOperation/@firstModelOperations/@subModelOperations.0/@subModelOperations.0/@groups.0"/>
+                    <groups name="Default Group" labelExpression="Else Port" semanticCandidateExpression="var:self">
+                      <controls xsi:type="properties:TextDescription" name="name" labelExpression="Name">
+                        <initialOperation>
+                          <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:instance">
+                            <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="aql:newValue"/>
+                          </firstModelOperations>
+                        </initialOperation>
+                      </controls>
+                    </groups>
+                  </subModelOperations>
+                  <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:instance">
+                    <subModelOperations xsi:type="tool_1:SetValue" featureName="UUID" valueExpression="service:generateUUID()"/>
+                  </subModelOperations>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:NodeCreationDescription" name="ProvidedPort" nodeMappings="//@ownedViewpoints[name='IoT']/@ownedRepresentations[name='Software%20Diagram']/@defaultLayer/@nodeMappings[name='ProvidedPortNode']" extraMappings="//@ownedViewpoints[name='IoT']/@ownedRepresentations[name='Software%20Diagram']/@defaultLayer/@nodeMappings[name='ActuatorNode'] //@ownedViewpoints[name='IoT']/@ownedRepresentations[name='Software%20Diagram']/@defaultLayer/@nodeMappings[name='BranchingNode'] //@ownedViewpoints[name='IoT']/@ownedRepresentations[name='Software%20Diagram']/@defaultLayer/@nodeMappings[name='CounterLoopNode'] //@ownedViewpoints[name='IoT']/@ownedRepresentations[name='Software%20Diagram']/@defaultLayer/@nodeMappings[name='IterativeLoopNode'] //@ownedViewpoints[name='IoT']/@ownedRepresentations[name='Software%20Diagram']/@defaultLayer/@nodeMappings[name='SensorNode'] //@ownedViewpoints[name='IoT']/@ownedRepresentations[name='Software%20Diagram']/@defaultLayer/@nodeMappings[name='SequenceNode'] //@ownedViewpoints[name='IoT']/@ownedRepresentations[name='Software%20Diagram']/@defaultLayer/@containerMappings[name='SoftwareContainer'] //@ownedViewpoints[name='IoT']/@ownedRepresentations[name='Software%20Diagram']/@defaultLayer/@nodeMappings[name='SnippetNode']">
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:container">
+                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="iot::ProvidedPort" referenceName="providedport">
+                  <subModelOperations xsi:type="properties:DialogModelOperation" titleExpression="New Provided Port">
+                    <buttons labelExpression="Cancel" closeDialogOnClick="true" rollbackChangesOnClose="true"/>
+                    <buttons labelExpression="OK" default="true" closeDialogOnClick="true"/>
+                    <page name="Default Page" labelExpression="Create Provided Port" semanticCandidateExpression="var:self" groups="//@ownedViewpoints[name='IoT']/@ownedRepresentations[name='Software%20Diagram']/@defaultLayer/@toolSections.1/@ownedTools[name='ProvidedPort']/@initialOperation/@firstModelOperations/@subModelOperations.0/@subModelOperations.0/@groups.0"/>
+                    <groups name="Default Group" labelExpression="Provided Port" semanticCandidateExpression="var:self">
+                      <controls xsi:type="properties:TextDescription" name="name" labelExpression="Name">
+                        <initialOperation>
+                          <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:instance">
+                            <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="aql:newValue"/>
+                          </firstModelOperations>
+                        </initialOperation>
+                      </controls>
+                    </groups>
+                  </subModelOperations>
+                  <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:instance">
+                    <subModelOperations xsi:type="tool_1:SetValue" featureName="referto" valueExpression="aql:self.ancestors()->first()"/>
+                  </subModelOperations>
+                  <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:instance">
+                    <subModelOperations xsi:type="tool_1:SetValue" featureName="UUID" valueExpression="service:generateUUID()"/>
+                  </subModelOperations>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:EdgeCreationDescription" name="Use" edgeMappings="//@ownedViewpoints[name='IoT']/@ownedRepresentations[name='Software%20Diagram']/@defaultLayer/@edgeMappings[name='UseEdge']">
+            <sourceVariable name="source"/>
+            <targetVariable name="target"/>
+            <sourceViewVariable name="sourceView"/>
+            <targetViewVariable name="targetView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:SetValue" featureName="use" valueExpression="aql:target"/>
+            </initialOperation>
+          </ownedTools>
+        </toolSections>
+        <toolSections name="Controllers">
+          <ownedTools xsi:type="tool:NodeCreationDescription" name="Sequence" nodeMappings="//@ownedViewpoints[name='IoT']/@ownedRepresentations[name='Software%20Diagram']/@defaultLayer/@nodeMappings[name='SequenceNode']" extraMappings="//@ownedViewpoints[name='IoT']/@ownedRepresentations[name='Software%20Diagram']/@defaultLayer/@containerMappings[name='SoftwareContainer']">
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:container">
+                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="iot::Sequence" referenceName="item">
+                  <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:instance">
+                    <subModelOperations xsi:type="tool_1:SetValue" featureName="UUID" valueExpression="service:generateUUID()"/>
+                    <subModelOperations xsi:type="tool_1:CreateInstance" typeName="iot::RequiredPort" referenceName="requiredport">
+                      <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:instance">
+                        <subModelOperations xsi:type="tool_1:SetValue" featureName="UUID" valueExpression="service:generateUUID()"/>
+                      </subModelOperations>
+                    </subModelOperations>
+                    <subModelOperations xsi:type="tool_1:CreateInstance" typeName="iot::ProvidedPort" referenceName="providedport">
+                      <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:instance">
+                        <subModelOperations xsi:type="tool_1:SetValue" featureName="referto" valueExpression="aql:self.ancestors()->first()"/>
+                        <subModelOperations xsi:type="tool_1:SetValue" featureName="UUID" valueExpression="service:generateUUID()"/>
+                      </subModelOperations>
+                    </subModelOperations>
+                  </subModelOperations>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:NodeCreationDescription" name="Branching" nodeMappings="//@ownedViewpoints[name='IoT']/@ownedRepresentations[name='Software%20Diagram']/@defaultLayer/@nodeMappings[name='BranchingNode']" extraMappings="//@ownedViewpoints[name='IoT']/@ownedRepresentations[name='Software%20Diagram']/@defaultLayer/@containerMappings[name='SoftwareContainer']">
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:container">
+                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="iot::Branching" referenceName="item">
+                  <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:instance">
+                    <subModelOperations xsi:type="tool_1:SetValue" featureName="UUID" valueExpression="service:generateUUID()"/>
+                    <subModelOperations xsi:type="tool_1:CreateInstance" typeName="iot::IfPort" referenceName="ifport">
+                      <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:instance">
+                        <subModelOperations xsi:type="tool_1:SetValue" featureName="UUID" valueExpression="service:generateUUID()"/>
+                      </subModelOperations>
+                    </subModelOperations>
+                    <subModelOperations xsi:type="tool_1:CreateInstance" typeName="iot::ProvidedPort" referenceName="providedport">
+                      <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:instance">
+                        <subModelOperations xsi:type="tool_1:SetValue" featureName="referto" valueExpression="aql:self.ancestors()->first()"/>
+                        <subModelOperations xsi:type="tool_1:SetValue" featureName="UUID" valueExpression="service:generateUUID()"/>
+                      </subModelOperations>
+                    </subModelOperations>
+                    <subModelOperations xsi:type="tool_1:CreateInstance" typeName="iot::ThenPort" referenceName="thenport">
+                      <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:instance">
+                        <subModelOperations xsi:type="tool_1:SetValue" featureName="UUID" valueExpression="service:generateUUID()"/>
+                      </subModelOperations>
+                    </subModelOperations>
+                  </subModelOperations>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:NodeCreationDescription" name="Iterative Loop" nodeMappings="//@ownedViewpoints[name='IoT']/@ownedRepresentations[name='Software%20Diagram']/@defaultLayer/@nodeMappings[name='IterativeLoopNode']" extraMappings="//@ownedViewpoints[name='IoT']/@ownedRepresentations[name='Software%20Diagram']/@defaultLayer/@containerMappings[name='SoftwareContainer']">
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:container">
+                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="iot::IterativeLoop" referenceName="item">
+                  <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:instance">
+                    <subModelOperations xsi:type="tool_1:SetValue" featureName="UUID" valueExpression="service:generateUUID()"/>
+                    <subModelOperations xsi:type="tool_1:CreateInstance" typeName="iot::RequiredPort" referenceName="requiredport">
+                      <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:instance">
+                        <subModelOperations xsi:type="tool_1:SetValue" featureName="UUID" valueExpression="service:generateUUID()"/>
+                      </subModelOperations>
+                    </subModelOperations>
+                    <subModelOperations xsi:type="tool_1:CreateInstance" typeName="iot::ProvidedPort" referenceName="providedport">
+                      <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:instance">
+                        <subModelOperations xsi:type="tool_1:SetValue" featureName="referto" valueExpression="aql:self.ancestors()->first()"/>
+                        <subModelOperations xsi:type="tool_1:SetValue" featureName="UUID" valueExpression="service:generateUUID()"/>
+                      </subModelOperations>
+                    </subModelOperations>
+                    <subModelOperations xsi:type="tool_1:CreateInstance" typeName="iot::ConditionPort" referenceName="condition">
+                      <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:instance">
+                        <subModelOperations xsi:type="tool_1:SetValue" featureName="UUID" valueExpression="service:generateUUID()"/>
+                      </subModelOperations>
+                    </subModelOperations>
+                  </subModelOperations>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:NodeCreationDescription" name="Counter Loop" nodeMappings="//@ownedViewpoints[name='IoT']/@ownedRepresentations[name='Software%20Diagram']/@defaultLayer/@nodeMappings[name='CounterLoopNode']" extraMappings="//@ownedViewpoints[name='IoT']/@ownedRepresentations[name='Software%20Diagram']/@defaultLayer/@containerMappings[name='SoftwareContainer']">
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:container">
+                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="iot::CounterLoop" referenceName="item">
+                  <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:instance">
+                    <subModelOperations xsi:type="tool_1:SetValue" featureName="UUID" valueExpression="service:generateUUID()"/>
+                    <subModelOperations xsi:type="tool_1:CreateInstance" typeName="iot::RequiredPort" referenceName="requiredport">
+                      <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:instance">
+                        <subModelOperations xsi:type="tool_1:SetValue" featureName="UUID" valueExpression="service:generateUUID()"/>
+                      </subModelOperations>
+                    </subModelOperations>
+                    <subModelOperations xsi:type="tool_1:CreateInstance" typeName="iot::ProvidedPort" referenceName="providedport">
+                      <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:instance">
+                        <subModelOperations xsi:type="tool_1:SetValue" featureName="referto" valueExpression="aql:self.ancestors()->first()"/>
+                        <subModelOperations xsi:type="tool_1:SetValue" featureName="UUID" valueExpression="service:generateUUID()"/>
+                      </subModelOperations>
+                    </subModelOperations>
+                  </subModelOperations>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+        </toolSections>
+      </defaultLayer>
+    </ownedRepresentations>
+    <ownedJavaExtensions qualifiedClassName="com.pfc.iot.design.Services"/>
+  </ownedViewpoints>
+</description:Group>

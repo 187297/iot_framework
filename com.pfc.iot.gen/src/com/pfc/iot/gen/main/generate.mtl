@@ -1,0 +1,431 @@
+[comment encoding = UTF-8 /]
+[**
+ * The documentation of the module generate.
+ */]
+[module generate('http://www.example.org/iot')]
+
+
+[**
+ * The documentation of the template generateElement.
+ * @param aSoftware
+ */]
+[template public generateElement(aSoftware : iot::Software)]
+[comment @main/]
+[file (name.concat('_').concat(getDate()).toUpperFirst().concat('.java'), false)]
+import com.pfc.iot.IotFactory;
+import com.pfc.iot.impl.IotFactoryImpl;
+import com.pfc.iot.Sensor;
+import com.pfc.iot.Actuator;
+import com.pfc.iot.Software;
+import com.pfc.iot.Snippet;
+import com.pfc.iot.Sequence;
+import com.pfc.iot.Branching;
+import com.pfc.iot.CounterLoop;
+import com.pfc.iot.IterativeLoop;
+import com.pfc.iot.ProvidedPort;
+import com.pfc.iot.RequiredPort;
+import com.pfc.iot.IfPort;
+import com.pfc.iot.ThenPort;
+import com.pfc.iot.ElsePort;
+import com.pfc.iot.ConditionPort;
+import com.pfc.iot.Operator;
+
+public class [name.concat('_').concat(getDate()).toUpperFirst() /] {
+
+	private static IotFactory iotFactory = IotFactoryImpl.init();
+	[for (item : iot::Item | aSoftware.item)]
+	[let name : String = item.UUID]
+	[generateE(item, name)/]
+	[/let]
+	[if (item.oclIsKindOf(iot::Component))]	
+	[for (port : iot::ProvidedPort | item.oclAsType(iot::Component).providedport)]
+	[generateE(port)/]
+	[/for]
+	[for (port : iot::RequiredPort | item.oclAsType(iot::Component).requiredport)]
+	[generateE(port)/]
+	[/for]
+	[/if]
+	[if (item.oclIsKindOf(iot::Sequence))]	
+	[for (port : iot::ProvidedPort | item.oclAsType(iot::Sequence).providedport)]
+	[generateE(port)/]
+	[/for]
+	[for (port : iot::RequiredPort | item.oclAsType(iot::Sequence).requiredport)]
+	[generateE(port)/]
+	[/for]
+	[/if]
+	[if (item.oclIsKindOf(iot::Branching))]	
+	[for (port : iot::ProvidedPort | item.oclAsType(iot::Branching).providedport)]
+	[generateE(port)/]
+	[/for]
+	[generateE(item.oclAsType(iot::Branching).ifport)/]
+	[if (item.oclAsType(iot::Branching).thenport <> null )]
+	[generateE(item.oclAsType(iot::Branching).thenport)/]
+	[/if]
+	[if (item.oclAsType(iot::Branching).elseport <> null )]
+	[generateE(item.oclAsType(iot::Branching).elseport)/]
+	[/if]
+	[/if]
+	[if (item.oclIsKindOf(iot::IterativeLoop))]	
+	[for (port : iot::ProvidedPort | item.oclAsType(iot::IterativeLoop).providedport)]
+	[generateE(port)/]
+	[/for]
+	[for (port : iot::RequiredPort | item.oclAsType(iot::IterativeLoop).requiredport)]
+	[generateE(port)/]
+	[/for]
+	[for (port : iot::ConditionPort | item.oclAsType(iot::IterativeLoop).condition)]
+	[generateE(port)/]
+	[/for]
+	[/if]
+	[if (item.oclIsKindOf(iot::CounterLoop))]	
+	[for (port : iot::ProvidedPort | item.oclAsType(iot::CounterLoop).providedport)]
+	[generateE(port)/]
+	[/for]
+	[for (port : iot::RequiredPort | item.oclAsType(iot::CounterLoop).requiredport)]
+	[generateE(port)/]
+	[/for]
+	[/if]
+
+	[/for]
+
+	public static void main(String args['['/]]){
+		[for (item : iot::Item | aSoftware.item)]
+		[let name : String = item.UUID]
+		[if (item.oclIsKindOf(iot::Snippet))]
+		[generateElement(item.oclAsType(iot::Snippet), name) /]
+		[/if]
+		[if (item.oclIsKindOf(iot::Sensor))]
+		[generateElement(item.oclAsType(iot::Sensor), name) /]
+		[/if]
+		[if (item.oclIsKindOf(iot::Actuator))]
+		[generateElement(item.oclAsType(iot::Actuator), name) /]
+		[/if]
+		[if (item.oclIsKindOf(iot::Software))]
+		[generateElement(item.oclAsType(iot::Software)) /]
+		[/if]
+		[if (item.oclIsKindOf(iot::Sequence))]
+		[generateElement(item.oclAsType(iot::Sequence), name) /]
+		[/if]
+		[if (item.oclIsKindOf(iot::Branching))]
+		[generateElement(item.oclAsType(iot::Branching), name) /]
+		[/if]
+		[if (item.oclIsKindOf(iot::CounterLoop))]
+		[generateElement(item.oclAsType(iot::CounterLoop), name) /]
+		[/if]
+		[if (item.oclIsKindOf(iot::IterativeLoop))]
+		[generateElement(item.oclAsType(iot::IterativeLoop), name) /]
+		[/if]	
+		[/let]
+
+		[if (item.oclIsKindOf(iot::Component))]	
+		[for (port : iot::ProvidedPort | item.oclAsType(iot::Component).providedport)]
+		[generateElement(port)/]
+		[/for]
+		[for (port : iot::RequiredPort | item.oclAsType(iot::Component).requiredport)]
+		[generateElement(port)/]
+		[/for]
+		[setProvidedPort(item.oclAsType(iot::Component))/]
+		[setRequiredPort(item.oclAsType(iot::Component))/]
+		[/if]
+		[if (item.oclIsKindOf(iot::Sequence))]	
+		[for (port : iot::ProvidedPort | item.oclAsType(iot::Sequence).providedport)]
+		[generateElement(port)/]
+		[/for]
+		[for (port : iot::RequiredPort | item.oclAsType(iot::Sequence).requiredport)]
+		[generateElement(port)/]
+		[/for]
+		[setProvidedPort(item.oclAsType(iot::Sequence))/]
+		[setRequiredPort(item.oclAsType(iot::Sequence))/]
+		[/if]
+		[if (item.oclIsKindOf(iot::Branching))]	
+		[for (port : iot::ProvidedPort | item.oclAsType(iot::Branching).providedport)]
+		[generateElement(port)/]
+		[/for]
+		[setProvidedPort(item.oclAsType(iot::Branching))/]
+		[generateElement(item.oclAsType(iot::Branching).ifport)/]
+		[setIfPort(item.oclAsType(iot::Branching))/]
+		[if (item.oclAsType(iot::Branching).thenport <> null)]
+		[generateElement(item.oclAsType(iot::Branching).thenport)/]
+		[setThenPort(item.oclAsType(iot::Branching))/]
+		[/if]
+		[if (item.oclAsType(iot::Branching).elseport <> null )]
+		[generateElement(item.oclAsType(iot::Branching).elseport)/]
+		[setElsePort(item.oclAsType(iot::Branching))/]
+		[/if]
+		[/if]
+		[if (item.oclIsKindOf(iot::IterativeLoop))]	
+		[for (port : iot::ProvidedPort | item.oclAsType(iot::IterativeLoop).providedport)]
+		[generateElement(port)/]
+		[/for]
+		[for (port : iot::RequiredPort | item.oclAsType(iot::IterativeLoop).requiredport)]
+		[generateElement(port)/]
+		[/for]
+		[for (port : iot::ConditionPort | item.oclAsType(iot::IterativeLoop).condition)]
+		[generateElement(port)/]
+		[/for]
+		[setProvidedPort(item.oclAsType(iot::IterativeLoop))/]
+		[setRequiredPort(item.oclAsType(iot::IterativeLoop))/]
+		[setConditionPort(item.oclAsType(iot::IterativeLoop))/]
+		[/if]
+		[if (item.oclIsKindOf(iot::CounterLoop))]	
+		[for (port : iot::ProvidedPort | item.oclAsType(iot::CounterLoop).providedport)]
+		[generateElement(port)/]
+		[/for]
+		[for (port : iot::RequiredPort | item.oclAsType(iot::CounterLoop).requiredport)]
+		[generateElement(port)/]
+		[/for]
+		[setProvidedPort(item.oclAsType(iot::CounterLoop))/]
+		[setRequiredPort(item.oclAsType(iot::CounterLoop))/]
+		[/if]
+
+		[/for]
+		[for (item : iot::Item | aSoftware.item)]
+		[let name : String = item.UUID]
+		[if (item.newThread)]
+			[newThread(name)/]
+		[/if]
+		[/let]
+		[/for]
+
+	}
+}
+[/file]type filter text
+[/template]
+
+
+[comment To initialize instances/]
+[template private generateE(item : iot::Item, name: String)]
+private static [item.eClass().name /] [name /] = iotFactory.create[item.eClass().name/]();
+[/template]
+
+[template private generateE(port : iot::ProvidedPort) { n : String = port.UUID.toString() + '_' + port.name; }]
+private static ProvidedPort [n/] = iotFactory.createProvidedPort();
+[/template]
+
+[template private generateE(port : iot::RequiredPort) { n : String = port.UUID.toString() + '_' + port.name; }]
+private static RequiredPort [n/] = iotFactory.createRequiredPort();
+[/template]
+
+[template private generateE(port : iot::IfPort) { n : String = port.UUID.toString() + '_' + port.name; }]
+private static IfPort [n/] = iotFactory.createIfPort();
+[/template]
+
+[template private generateE(port : iot::ThenPort) { n : String = port.UUID.toString() + '_' + port.name; }]
+private static ThenPort [n/] = iotFactory.createThenPort();
+[/template]
+
+[template private generateE(port : iot::ElsePort) { n : String = port.UUID.toString() + '_' + port.name; }]
+private static ElsePort [n/] = iotFactory.createElsePort();
+[/template]
+
+[template private generateE(port : iot::ConditionPort) { n : String = port.UUID.toString() + '_' + port.name; }]
+private static ConditionPort [n/] = iotFactory.createConditionPort();
+[/template]
+
+
+[comment To set up all Component instances /]
+[template private generateElement(item : iot::Snippet, name : String)]
+[name /].setName("[item.eGet('name')/]");
+[name /].setScriptPath("[item.eGet('scriptPath') /]");
+[comment]System.out.println([name /].invoke());[/comment]
+[/template]
+
+[template private generateElement(item : iot::Sensor, name : String)]
+[name /].setMode([item.eGet('mode')/]);
+[name /].setName("[item.eGet('name')/]");
+[name /].setPinNumber([item.eGet('pinNumber')/]);
+[name /].setType("[item.eGet('type')/]");
+[name /].setTimeInterval([item.eGet('timeInterval')/]);
+[if (isNull(item.eGet('script')))]
+[else]
+[name /].setScript("[item.eGet('script')/]");
+[/if]
+[comment]System.out.println([name /].invoke());[/comment]
+[/template]
+
+[template private generateElement(item : iot::Actuator, name : String)]
+[name /].setName("[item.eGet('name')/]");
+[name /].setMode([item.eGet('mode')/]);
+[name /].setPinNumber([item.eGet('pinNumber')/]);
+[name /].setType("[item.eGet('type')/]");
+[name /].setTimeInterval([item.eGet('timeInterval')/]);
+[name /].setToggle([item.eGet('toggle')/]);
+[comment]System.out.println([name /].invoke());[/comment]
+[/template]
+
+
+[comment TODO: set up all Controller instances /]
+[template private generateElement(item : iot::Sequence, name : String)]
+[name /].setName("[item.eGet('name')/]");
+[comment][name /].invoke();[/comment]
+[/template]
+
+[template private generateElement(item : iot::Branching, name : String)]
+[name /].setName("[item.eGet('name')/]");
+[comment][name /].invoke();[/comment]
+[/template]
+
+[template private generateElement(item : iot::CounterLoop, name : String)]
+[name /].setName("[item.eGet('name')/]");
+[name /].setCounter([item.eGet('counter')/]);
+[comment][name /].invoke();[/comment]
+[/template]
+
+[template private generateElement(item : iot::IterativeLoop, name : String)]
+[name /].setName("[item.eGet('name')/]");
+[name /].setVar([item.eGet('var')/]);
+[name /].setOperator(Operator.[item.eGet('operator')/]);
+[comment][name /].invoke();[/comment]
+[/template]
+
+
+[comment TODO: set up all Required and Provided port /]
+[template private generateElement(port : iot::ProvidedPort) { n : String = port.UUID.toString() + '_' + port.name; }]
+[n/].setReferto([port.referto.UUID /]);
+[/template]
+
+[template private generateElement(port : iot::RequiredPort) { n : String = port.UUID.toString() + '_' + port.name; }]
+[if (port.method = null)]
+[else]
+[n/].setMethod("[port.method/]");	
+[/if]
+[if (port.args = null)]
+[else]
+[n/].setArgs("[port.args/]");	
+[/if]
+[if (port.use.name = null)]
+[n/].setUse([port.use.UUID.concat('_')/]);
+[else]
+[n/].setUse([port.use.UUID.concat('_').concat(port.use.name)/]);
+[/if]
+[/template]
+
+[template private generateElement(port : iot::IfPort) { n : String = port.UUID.toString() + '_' + port.name; }]
+[n /].setVar([port.eGet('var')/]);
+[n /].setOperator(Operator.[port.eGet('operator')/]);
+[if (port.method = null)]
+[else]
+[n/].setMethod("[port.method/]");	
+[/if]
+[if (port.args = null)]
+[else]
+[n/].setArgs("[port.args/]");	
+[/if]
+[if (port.use.name = null)]
+[n/].setUse([port.use.UUID.concat('_')/]);
+[else]
+[n/].setUse([port.use.UUID.concat('_').concat(port.use.name)/]);
+[/if]
+[/template]
+
+[template private generateElement(port : iot::ThenPort) { n : String = port.UUID.toString() + '_' + port.name; }]
+[if (port.method = null)]
+[else]
+[n/].setMethod("[port.method/]");	
+[/if]
+[if (port.args = null)]
+[else]
+[n/].setArgs("[port.args/]");	
+[/if]
+[if (port.use.name = null)]
+[n/].setUse([port.use.UUID.concat('_')/]);
+[else]
+[n/].setUse([port.use.UUID.concat('_').concat(port.use.name)/]);
+[/if]
+[/template]
+
+[template private generateElement(port : iot::ElsePort) { n : String = port.UUID.toString() + '_' + port.name; }]
+[if (port.method = null)]
+[else]
+[n/].setMethod("[port.method/]");	
+[/if]
+[if (port.args = null)]
+[else]
+[n/].setArgs("[port.args/]");	
+[/if]
+[if (port.use.name = null)]
+[n/].setUse([port.use.UUID.concat('_')/]);
+[else]
+[n/].setUse([port.use.UUID.concat('_').concat(port.use.name)/]);
+[/if]
+[/template]
+
+[template private generateElement(port : iot::ConditionPort) { n : String = port.UUID.toString() + '_' + port.name; }]
+[if (port.method = null)]
+[else]
+[n/].setMethod("[port.method/]");	
+[/if]
+[if (port.args = null)]
+[else]
+[n/].setArgs("[port.args/]");	
+[/if]
+[if (port.use.name = null)]
+[n/].setUse([port.use.UUID.concat('_')/]);
+[else]
+[n/].setUse([port.use.UUID.concat('_').concat(port.use.name)/]);
+[/if]
+[/template]
+
+
+[comment Set up Provided Ports and Required Ports for all components and controllers /]
+[template private setProvidedPort(item : iot::Component)]
+[for (port : iot::ProvidedPort | item.providedport)]
+[let n : String = port.UUID.toString() + '_' + port.name]
+[item.UUID /].getProvidedport().add([n/]);
+[/let]
+[/for]
+[/template]
+
+[template private setRequiredPort(item : iot::Component)]
+[for (port : iot::RequiredPort | item.requiredport)]
+[item.UUID /].getRequiredport().add([port.UUID.toString() + '_' + port.name/]);
+[/for]
+[/template]
+
+[template private setProvidedPort(item : iot::Controller)]
+[item.UUID /].setProvidedport([item.providedport.UUID.toString() + '_' + item.providedport.name/]);
+[/template]
+
+[template private setRequiredPort(item : iot::Sequence)]
+[for (port : iot::RequiredPort | item.requiredport)]
+[item.UUID /].getRequiredport().add([port.UUID.toString() + '_' + port.name/]);
+[/for]
+[/template]
+
+[template private setRequiredPort(item : iot::Iteration)]
+[item.UUID /].setRequiredport([item.requiredport.UUID.toString() + '_' + item.requiredport.name/]);
+[/template]
+
+[template private setConditionPort(item : iot::IterativeLoop)]
+[item.UUID /].setCondition([item.condition.UUID.toString() + '_' + item.condition.name/]);
+[/template]
+
+[template private setIfPort(item : iot::Branching)]
+[item.UUID /].setIfport([item.ifport.UUID.toString() + '_' + item.ifport.name/]);
+[/template]
+
+[template private setThenPort(item : iot::Branching)]
+[item.UUID /].setThenport([item.thenport.UUID.toString() + '_' + item.thenport.name/]);
+[/template]
+
+[template private setElsePort(item : iot::Branching)]
+[item.UUID /].setElseport([item.elseport.UUID.toString() + '_' + item.elseport.name/]);
+[/template]
+
+
+
+[template private newThread(name : String)]
+new Thread() {
+			public void run() {
+				[name /].invoke();
+			}
+		}.start();
+[/template]
+
+
+[query public getDate() : String = invoke('com.pfc.iot.gen.main.Helper', 'getDate()', Sequence{})/]
+[query public isNull(str:String) : Boolean = invoke('com.pfc.iot.gen.main.Helper', 'isNull(java.lang.String)', Sequence{str})/]
+[query public generateUUID() : String = invoke('org.eclipse.emf.ecore.util.EcoreUtil', 'generateUUID()', Sequence{})/]
+
+
+
+

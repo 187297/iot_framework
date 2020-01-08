@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+<plugin>
+  <extension point="org.eclipse.sirius.componentization">
+    <component class="com.pfc.iot.design.Activator"
+               id="com.pfc.iot.design"
+	       name="iot">
+    </component>
+  </extension>
+  <extension
+        point="org.eclipse.sirius.externalJavaAction">
+     <javaActions
+           actionClass="com.pfc.iot.design.ExternalJavaAction"
+           id="com.pfc.iot.design.javaAction">
+     </javaActions>
+  </extension>
+</plugin>

@@ -1,0 +1,9 @@
+Path,Lines of code,Lines of code generated,Lines of user code, Percentage of generated code
+/com.emf.iot.testgen,76,76,0,"100.00"
+/com.emf.iot.testgen/META-INF,23,23,0,"100.00"
+/com.emf.iot.testgen/bin/com/emf/iot/testgen,20,20,0,"100.00"
+/com.emf.iot.testgen/bin/com/emf/iot/testgen/main,543,543,0,"100.00"
+/com.emf.iot.testgen/src-gen,7,7,0,"100.00"
+/com.emf.iot.testgen/src/com/emf/iot/testgen,66,66,0,"100.00"
+/com.emf.iot.testgen/src/com/emf/iot/testgen/main,451,451,0,"100.00"
+/com.emf.iot.testgen/tasks,62,62,0,"100.00"

@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel"
+    modelDirectory="/com.pfc.iot/src-gen" creationIcons="false" editDirectory="/com.pfc.iot.edit/src-gen"
+    editorDirectory="/com.pfc.iot.editor/src-gen" modelPluginID="com.pfc.iot" modelName="Iot"
+    rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container" codeFormatting="true"
+    importerID="org.eclipse.emf.importer.ecore" complianceLevel="8.0" copyrightFields="false"
+    operationReflection="true" importOrganizing="true">
+  <foreignModel>iot.ecore</foreignModel>
+  <testsDirectory xsi:nil="true"/>
+  <genPackages prefix="Iot" basePackage="com.pfc" disposableProviderFactory="true"
+      ecorePackage="iot.ecore#/">
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="iot.ecore#//Operator">
+      <genEnumLiterals ecoreEnumLiteral="iot.ecore#//Operator/EQ"/>
+      <genEnumLiterals ecoreEnumLiteral="iot.ecore#//Operator/NE"/>
+      <genEnumLiterals ecoreEnumLiteral="iot.ecore#//Operator/GT"/>
+      <genEnumLiterals ecoreEnumLiteral="iot.ecore#//Operator/GE"/>
+      <genEnumLiterals ecoreEnumLiteral="iot.ecore#//Operator/LT"/>
+      <genEnumLiterals ecoreEnumLiteral="iot.ecore#//Operator/LE"/>
+    </genEnums>
+    <genClasses ecoreClass="iot.ecore#//Software">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference iot.ecore#//Software/item"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="iot.ecore#//Hardware">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute iot.ecore#//Hardware/type"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute iot.ecore#//Hardware/pinNumber"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute iot.ecore#//Hardware/mode"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute iot.ecore#//Hardware/timeInterval"/>
+    </genClasses>
+    <genClasses ecoreClass="iot.ecore#//CounterLoop">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute iot.ecore#//CounterLoop/counter"/>
+    </genClasses>
+    <genClasses ecoreClass="iot.ecore#//IfPort">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute iot.ecore#//IfPort/condition"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute iot.ecore#//IfPort/var"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute iot.ecore#//IfPort/operator"/>
+    </genClasses>
+    <genClasses ecoreClass="iot.ecore#//Actuator">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute iot.ecore#//Actuator/toggle.1"/>
+      <genOperations ecoreOperation="iot.ecore#//Actuator/toggle"/>
+      <genOperations ecoreOperation="iot.ecore#//Actuator/getStatus"/>
+      <genOperations ecoreOperation="iot.ecore#//Actuator/switchOnOff">
+        <genParameters ecoreParameter="iot.ecore#//Actuator/switchOnOff/onOff"/>
+      </genOperations>
+    </genClasses>
+    <genClasses ecoreClass="iot.ecore#//IterativeLoop">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute iot.ecore#//IterativeLoop/var"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute iot.ecore#//IterativeLoop/operator"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference iot.ecore#//IterativeLoop/condition"/>
+    </genClasses>
+    <genClasses ecoreClass="iot.ecore#//ProvidedPort">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute iot.ecore#//ProvidedPort/UUID"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference iot.ecore#//ProvidedPort/referto"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute iot.ecore#//ProvidedPort/name"/>
+      <genOperations ecoreOperation="iot.ecore#//ProvidedPort/invoke">
+        <genParameters ecoreParameter="iot.ecore#//ProvidedPort/invoke/method"/>
+        <genParameters ecoreParameter="iot.ecore#//ProvidedPort/invoke/args"/>
+      </genOperations>
+      <genOperations ecoreOperation="iot.ecore#//ProvidedPort/invoke.1">
+        <genParameters ecoreParameter="iot.ecore#//ProvidedPort/invoke.1/method"/>
+      </genOperations>
+    </genClasses>
+    <genClasses ecoreClass="iot.ecore#//Branching">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference iot.ecore#//Branching/ifport"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference iot.ecore#//Branching/thenport"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference iot.ecore#//Branching/elseport"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="iot.ecore#//Iteration">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference iot.ecore#//Iteration/requiredport"/>
+    </genClasses>
+    <genClasses ecoreClass="iot.ecore#//Sensor">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute iot.ecore#//Sensor/script"/>
+      <genOperations ecoreOperation="iot.ecore#//Sensor/getData"/>
+    </genClasses>
+    <genClasses ecoreClass="iot.ecore#//Sequence">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference iot.ecore#//Sequence/requiredport"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="iot.ecore#//Component">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference iot.ecore#//Component/requiredport"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference iot.ecore#//Component/providedport"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="iot.ecore#//Controller">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference iot.ecore#//Controller/providedport"/>
+    </genClasses>
+    <genClasses ecoreClass="iot.ecore#//RequiredPort">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute iot.ecore#//RequiredPort/name"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference iot.ecore#//RequiredPort/use"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute iot.ecore#//RequiredPort/UUID"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute iot.ecore#//RequiredPort/method"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute iot.ecore#//RequiredPort/args"/>
+      <genOperations ecoreOperation="iot.ecore#//RequiredPort/invoke">
+        <genParameters ecoreParameter="iot.ecore#//RequiredPort/invoke/method"/>
+      </genOperations>
+    </genClasses>
+    <genClasses ecoreClass="iot.ecore#//Snippet">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute iot.ecore#//Snippet/scriptPath"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="iot.ecore#//Item">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute iot.ecore#//Item/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute iot.ecore#//Item/UUID"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute iot.ecore#//Item/newThread"/>
+      <genOperations ecoreOperation="iot.ecore#//Item/invoke"/>
+    </genClasses>
+    <genClasses ecoreClass="iot.ecore#//ConditionPort"/>
+    <genClasses ecoreClass="iot.ecore#//ThenPort"/>
+    <genClasses ecoreClass="iot.ecore#//ElsePort"/>
+  </genPackages>
+</genmodel:GenModel>

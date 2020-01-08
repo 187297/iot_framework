@@ -1,0 +1,245 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore2ecore:Ecore2EcoreMappingRoot xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore2ecore="http://www.eclipse.org/emf/2004/Ecore2Ecore" topToBottom="true">
+  <nested>
+    <nested>
+      <inputs href="../../com.emf.iot/model/iot.ecore#//Software/item"/>
+      <outputs href="iot.ecore#//Software/item"/>
+    </nested>
+    <inputs href="../../com.emf.iot/model/iot.ecore#//Software"/>
+    <outputs href="iot.ecore#//Software"/>
+  </nested>
+  <nested>
+    <nested>
+      <inputs href="../../com.emf.iot/model/iot.ecore#//Hardware/type"/>
+      <outputs href="iot.ecore#//Hardware/type"/>
+    </nested>
+    <nested>
+      <inputs href="../../com.emf.iot/model/iot.ecore#//Hardware/pinNumber"/>
+      <outputs href="iot.ecore#//Hardware/pinNumber"/>
+    </nested>
+    <nested>
+      <inputs href="../../com.emf.iot/model/iot.ecore#//Hardware/mode"/>
+      <outputs href="iot.ecore#//Hardware/mode"/>
+    </nested>
+    <nested>
+      <inputs href="../../com.emf.iot/model/iot.ecore#//Hardware/timeInterval"/>
+      <outputs href="iot.ecore#//Hardware/timeInterval"/>
+    </nested>
+    <inputs href="../../com.emf.iot/model/iot.ecore#//Hardware"/>
+    <outputs href="iot.ecore#//Hardware"/>
+  </nested>
+  <nested>
+    <nested>
+      <inputs href="../../com.emf.iot/model/iot.ecore#//CounterLoop/counter"/>
+      <outputs href="iot.ecore#//CounterLoop/counter"/>
+    </nested>
+    <inputs href="../../com.emf.iot/model/iot.ecore#//CounterLoop"/>
+    <outputs href="iot.ecore#//CounterLoop"/>
+  </nested>
+  <nested>
+    <nested>
+      <inputs href="../../com.emf.iot/model/iot.ecore#//ConditionalRequiredPort/operator"/>
+    </nested>
+    <nested>
+      <inputs href="../../com.emf.iot/model/iot.ecore#//ConditionalRequiredPort/var2"/>
+    </nested>
+    <nested>
+      <inputs href="../../com.emf.iot/model/iot.ecore#//ConditionalRequiredPort/var1"/>
+    </nested>
+    <nested>
+      <inputs href="../../com.emf.iot/model/iot.ecore#//ConditionalRequiredPort/condition"/>
+      <outputs href="iot.ecore#//IfPort/condition"/>
+    </nested>
+    <inputs href="../../com.emf.iot/model/iot.ecore#//ConditionalRequiredPort"/>
+    <outputs href="iot.ecore#//IfPort"/>
+  </nested>
+  <nested>
+    <nested>
+      <inputs href="../../com.emf.iot/model/iot.ecore#//Actuator/toggle"/>
+      <outputs href="iot.ecore#//Actuator/toggle"/>
+    </nested>
+    <nested>
+      <inputs href="../../com.emf.iot/model/iot.ecore#//Actuator/getStatus"/>
+      <outputs href="iot.ecore#//Actuator/getStatus"/>
+    </nested>
+    <nested>
+      <inputs href="../../com.emf.iot/model/iot.ecore#//Actuator/toggle.1"/>
+      <outputs href="iot.ecore#//Actuator/toggle.1"/>
+    </nested>
+    <inputs href="../../com.emf.iot/model/iot.ecore#//Actuator"/>
+    <outputs href="iot.ecore#//Actuator"/>
+  </nested>
+  <nested>
+    <nested>
+      <inputs href="../../com.emf.iot/model/iot.ecore#//IterativeLoop/var1"/>
+    </nested>
+    <nested>
+      <inputs href="../../com.emf.iot/model/iot.ecore#//IterativeLoop/var2"/>
+      <outputs href="iot.ecore#//IterativeLoop/var"/>
+    </nested>
+    <nested>
+      <inputs href="../../com.emf.iot/model/iot.ecore#//IterativeLoop/operator"/>
+      <outputs href="iot.ecore#//IterativeLoop/operator"/>
+    </nested>
+    <inputs href="../../com.emf.iot/model/iot.ecore#//IterativeLoop"/>
+    <outputs href="iot.ecore#//IterativeLoop"/>
+  </nested>
+  <nested>
+    <nested>
+      <nested>
+        <inputs href="../../com.emf.iot/model/iot.ecore#//ProvidedPort/invoke/method"/>
+        <outputs href="iot.ecore#//ProvidedPort/invoke/method"/>
+      </nested>
+      <inputs href="../../com.emf.iot/model/iot.ecore#//ProvidedPort/invoke"/>
+      <outputs href="iot.ecore#//ProvidedPort/invoke"/>
+    </nested>
+    <nested>
+      <inputs href="../../com.emf.iot/model/iot.ecore#//ProvidedPort/UUID"/>
+      <outputs href="iot.ecore#//ProvidedPort/UUID"/>
+    </nested>
+    <nested>
+      <inputs href="../../com.emf.iot/model/iot.ecore#//ProvidedPort/referto"/>
+      <outputs href="iot.ecore#//ProvidedPort/referto"/>
+    </nested>
+    <nested>
+      <inputs href="../../com.emf.iot/model/iot.ecore#//ProvidedPort/name"/>
+      <outputs href="iot.ecore#//ProvidedPort/name"/>
+    </nested>
+    <inputs href="../../com.emf.iot/model/iot.ecore#//ProvidedPort"/>
+    <outputs href="iot.ecore#//ProvidedPort"/>
+  </nested>
+  <nested>
+    <nested>
+      <inputs href="../../com.emf.iot/model/iot.ecore#//Branching/requiredport"/>
+      <outputs href="iot.ecore#//Branching/ifport"/>
+    </nested>
+    <inputs href="../../com.emf.iot/model/iot.ecore#//Branching"/>
+    <outputs href="iot.ecore#//Branching"/>
+  </nested>
+  <nested>
+    <nested>
+      <inputs href="../../com.emf.iot/model/iot.ecore#//Iteration/requiredport"/>
+      <outputs href="iot.ecore#//Iteration/requiredport"/>
+    </nested>
+    <inputs href="../../com.emf.iot/model/iot.ecore#//Iteration"/>
+    <outputs href="iot.ecore#//Iteration"/>
+  </nested>
+  <nested>
+    <nested>
+      <inputs href="../../com.emf.iot/model/iot.ecore#//Sensor/getData"/>
+      <outputs href="iot.ecore#//Sensor/getData"/>
+    </nested>
+    <inputs href="../../com.emf.iot/model/iot.ecore#//Sensor"/>
+    <outputs href="iot.ecore#//Sensor"/>
+  </nested>
+  <nested>
+    <nested>
+      <inputs href="../../com.emf.iot/model/iot.ecore#//Sequence/requiredport"/>
+      <outputs href="iot.ecore#//Sequence/requiredport"/>
+    </nested>
+    <inputs href="../../com.emf.iot/model/iot.ecore#//Sequence"/>
+    <outputs href="iot.ecore#//Sequence"/>
+  </nested>
+  <nested>
+    <nested>
+      <inputs href="../../com.emf.iot/model/iot.ecore#//Component/requiredport"/>
+      <outputs href="iot.ecore#//Component/requiredport"/>
+    </nested>
+    <nested>
+      <inputs href="../../com.emf.iot/model/iot.ecore#//Component/providedport"/>
+      <outputs href="iot.ecore#//Component/providedport"/>
+    </nested>
+    <inputs href="../../com.emf.iot/model/iot.ecore#//Component"/>
+    <outputs href="iot.ecore#//Component"/>
+  </nested>
+  <nested>
+    <nested>
+      <inputs href="../../com.emf.iot/model/iot.ecore#//Controller/providedport"/>
+      <outputs href="iot.ecore#//Controller/providedport"/>
+    </nested>
+    <inputs href="../../com.emf.iot/model/iot.ecore#//Controller"/>
+    <outputs href="iot.ecore#//Controller"/>
+  </nested>
+  <nested>
+    <nested>
+      <nested>
+        <inputs href="../../com.emf.iot/model/iot.ecore#//RequiredPort/invoke/method"/>
+        <outputs href="iot.ecore#//RequiredPort/invoke/method"/>
+      </nested>
+      <inputs href="../../com.emf.iot/model/iot.ecore#//RequiredPort/invoke"/>
+      <outputs href="iot.ecore#//RequiredPort/invoke"/>
+    </nested>
+    <nested>
+      <inputs href="../../com.emf.iot/model/iot.ecore#//RequiredPort/name"/>
+      <outputs href="iot.ecore#//RequiredPort/name"/>
+    </nested>
+    <nested>
+      <inputs href="../../com.emf.iot/model/iot.ecore#//RequiredPort/use"/>
+      <outputs href="iot.ecore#//RequiredPort/use"/>
+    </nested>
+    <nested>
+      <inputs href="../../com.emf.iot/model/iot.ecore#//RequiredPort/UUID"/>
+      <outputs href="iot.ecore#//RequiredPort/UUID"/>
+    </nested>
+    <inputs href="../../com.emf.iot/model/iot.ecore#//RequiredPort"/>
+    <outputs href="iot.ecore#//RequiredPort"/>
+  </nested>
+  <nested>
+    <nested>
+      <inputs href="../../com.emf.iot/model/iot.ecore#//Snippet/scriptPath"/>
+      <outputs href="iot.ecore#//Snippet/scriptPath"/>
+    </nested>
+    <inputs href="../../com.emf.iot/model/iot.ecore#//Snippet"/>
+    <outputs href="iot.ecore#//Snippet"/>
+  </nested>
+  <nested>
+    <nested>
+      <inputs href="../../com.emf.iot/model/iot.ecore#//Item/invoke"/>
+      <outputs href="iot.ecore#//Item/invoke"/>
+    </nested>
+    <nested>
+      <inputs href="../../com.emf.iot/model/iot.ecore#//Item/name"/>
+      <outputs href="iot.ecore#//Item/name"/>
+    </nested>
+    <nested>
+      <inputs href="../../com.emf.iot/model/iot.ecore#//Item/UUID"/>
+      <outputs href="iot.ecore#//Item/UUID"/>
+    </nested>
+    <nested>
+      <inputs href="../../com.emf.iot/model/iot.ecore#//Item/newThread"/>
+      <outputs href="iot.ecore#//Item/newThread"/>
+    </nested>
+    <inputs href="../../com.emf.iot/model/iot.ecore#//Item"/>
+    <outputs href="iot.ecore#//Item"/>
+  </nested>
+  <nested>
+    <nested>
+      <inputs href="../../com.emf.iot/model/iot.ecore#//Operator/EQ"/>
+      <outputs href="iot.ecore#//Operator/EQ"/>
+    </nested>
+    <nested>
+      <inputs href="../../com.emf.iot/model/iot.ecore#//Operator/NE"/>
+      <outputs href="iot.ecore#//Operator/NE"/>
+    </nested>
+    <nested>
+      <inputs href="../../com.emf.iot/model/iot.ecore#//Operator/GT"/>
+      <outputs href="iot.ecore#//Operator/GT"/>
+    </nested>
+    <nested>
+      <inputs href="../../com.emf.iot/model/iot.ecore#//Operator/GE"/>
+      <outputs href="iot.ecore#//Operator/GE"/>
+    </nested>
+    <nested>
+      <inputs href="../../com.emf.iot/model/iot.ecore#//Operator/LT"/>
+      <outputs href="iot.ecore#//Operator/LT"/>
+    </nested>
+    <nested>
+      <inputs href="../../com.emf.iot/model/iot.ecore#//Operator/LE"/>
+      <outputs href="iot.ecore#//Operator/LE"/>
+    </nested>
+    <inputs href="../../com.emf.iot/model/iot.ecore#//Operator"/>
+    <outputs href="iot.ecore#//Operator"/>
+  </nested>
+  <inputs href="../../com.emf.iot/model/iot.ecore#/"/>
+  <outputs href="iot.ecore#/"/>
+</ecore2ecore:Ecore2EcoreMappingRoot>
